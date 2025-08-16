@@ -1,0 +1,159 @@
+.description {
+  font-family: "Garamond", "Times New Roman", serif;
+  font-size: 1.3rem;       /* slightly larger */
+  font-weight: bold;       /* make it bold */
+  color: #f0e6d2;          /* soft elegant color on black bg */
+  text-align: center;
+  line-height: 1.6;
+  max-width: 80%;
+  margin: 20px auto;
+  transition: opacity 200ms ease; /* smooth fade when text changes */
+}
+
+
+body, html {
+  margin: 0;
+  padding: 0;
+  background: black;
+  font-family: Arial, sans-serif;
+  color: white;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.left {
+  width: 60%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.scene {
+  position: absolute;  /* positioned inside .left */
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* centers */
+  width: 700px;
+  height: 700px;
+  margin:  auto;
+  overflow: hidden;   /* hides anything outside the scene */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Subtle vignette overlay */
+.scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+
+  background:
+    linear-gradient(to top,    rgba(0,0,0,0.8) 10%, rgba(0,0,0,0) 20%),
+    linear-gradient(to bottom, rgba(0,0,0,0.8) 16%, rgba(0,0,0,0) 20%),
+    linear-gradient(to left,   rgba(0,0,0,0.8) 15%, rgba(0,0,0,0) 20%),
+    linear-gradient(to right,  rgba(0,0,0,0.8) 15%, rgba(0,0,0,0) 20%);
+}
+
+
+/* Sockets on top of vignette */
+
+
+/* Image centered inside the scene */
+.bg-image {
+  width: 500px;   /* fixed size */
+  height: 500px;  /* fixed size */
+  object-fit: cover; /* fill without distortion */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* centers image */
+  z-index: 1;  /* under sockets, above scene bg */
+}
+
+/* Sockets must be above the overlay */
+/* Base socket style */
+.socket {
+  position: absolute;
+  width: 80px;          /* try bigger for debugging */
+  height: 80px;
+  background-size: contain;   /* or 'cover' if you want full fill */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  z-index: 10;                 /* must be above the vignette overlay */
+  /*outline: 1px dashed #0f0;   /* TEMP: visual debug, remove later */
+}
+
+
+
+/* Then add the individual images */
+#socket1 { background-image: url("../images/TS.png"); }
+#socket2 { background-image: url("../images/AS.png"); }
+#socket3 { background-image: url("../images/AG.png"); }
+#socket4 { background-image: url("../images/OS.png"); }
+
+
+
+.characters {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 10;     
+  background: none; /* remove black strip if you don’t want it */
+}
+
+
+.character {
+  -webkit-user-drag: element;
+  cursor: grab; 
+  width: 120px;   /* bigger characters */
+  height: auto;   /* keeps aspect ratio */
+  cursor: grab;
+}
+
+.right {
+  width: 40%;
+  background: white;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.monitor {
+  width: 90%;
+  height: 60%;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.monitor video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.description {
+  color: black;
+  font-size: 14px;
+  text-align: center;
+}

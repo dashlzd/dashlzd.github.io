@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Drag Drop Scene</title>
+  <link rel="stylesheet" href="css/style_01.css" />
+</head>
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<body>
+  <div class="container">
+
+    <div class="left">
+      <div class="scene">
+       <img src="images/Scene_Perspective.png" class="bg-image" alt="Background" />
+
+      
+      <div class="socket" id="socket1" style="top: 52%; left: 60%;"></div>
+      <div class="socket" id="socket2" style="top: 65%; left: 16%;"></div>
+      <div class="socket" id="socket3" style="top: 65%; left: 40%;"></div>
+      <div class="socket" id="socket4" style="top: 35%; left: 35%;"></div>
+      </div>
+
+      <!-- Characters -->
+      <div class="characters">
+        <img src="images/Tanceridi 1.png" class="character" draggable="true" id="char1" />
+        <img src="images/Amiendi.png" class="character" draggable="true" id="char2" />
+        <img src="images/Argirio_ 1.png" class="character" draggable="true" id="char3" />
+        <img src="images/Orbazzano_ 1.png" class="character" draggable="true" id="char4" />
+      </div>
+    </div>
+
+  <!-- Right panel video -->
+  <div class="right">
+    <div class="monitor">
+    <video id="videoPlayer" controls autoplay loop>
+  <source src="video/default_intro.mp4" type="video/mp4" />
+  Your browser does not support video.
+</video>
+    </div>
+  <p class="description">This is the Description of the scene</p>
+  </div>
+
+
+<!-- Load JS (use defer so it runs after HTML parses) -->
+<script src="script_01.js" defer></script>
+</body>
+</html>
